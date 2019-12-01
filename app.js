@@ -5,7 +5,8 @@ const app = express()
 const port = process.env.PORT || '1233'
 app.use(express.json())
 
-const ninjaRoute = require('./routes/ninjaRoute')()
+const Ninja = require('./models/ninjaModel')
+const ninjaRoute = require('./routes/ninjaRoute')(Ninja)
 
 app.use('/api/ninjas', ninjaRoute)
 

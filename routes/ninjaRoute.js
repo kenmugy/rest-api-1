@@ -1,11 +1,16 @@
 const router = require('express').Router();
 
-const ninjaRouter = () => {
+const ninjaRouter = (Ninja) => {
   router.get('/', (req, res) => {
     res.json({ type: 'GET' });
   });
 
-  router.post('/', (req, res) => {
+  router.post('/', async(req, res) => {
+      const ninja = new Ninja({
+          name: req.body.name,
+          rank: req.body.rank,
+          availability: req.body.availability
+      })
     res.json({ type: 'POST' });
   });
 
