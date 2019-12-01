@@ -3,7 +3,10 @@ const express = require('express')
 const app = express()
 
 const port = process.env.PORT || '1233'
+app.use(express.json())
 
-app.get('/', (req, res) => res.json({"type": "GET"}))
+const ninjaRoute = require('./routes/ninjaRoute')()
+
+app.use('/api/ninjas', ninjaRoute)
 
 app.listen(port, ()=> console.log(`listening on port ${port}`))

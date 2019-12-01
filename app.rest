@@ -1,1 +1,7 @@
-get http://localhost:1233/
+get http://localhost:1233/api/ninjas
+###
+post http://localhost:1233/api/ninjas
+###
+put http://localhost:1233/api/ninjas/3
+###
+delete http://localhost:1233/api/ninjas/3
