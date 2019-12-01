@@ -1,5 +1,7 @@
 get http://localhost:1233/api/ninjas
 ###
+get http://localhost:1233/api/ninjas/5de3b413b3957b6460f34dc3
+###
 post http://localhost:1233/api/ninjas
 Content-Type: application/json
 

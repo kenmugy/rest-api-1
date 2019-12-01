@@ -10,6 +10,16 @@ const ninjaRouter = Ninja => {
     }
   });
 
+  router.get('/:id', async (req, res) => {
+    try {
+      const ninja = await Ninja.findById(req.params.id);
+      res.json(ninja);
+    } catch (error) {
+      res.sendStatus(404);
+    }
+    // res.json({ type: 'GET' });
+  });
+
   router.post('/', async (req, res) => {
     try {
       const ninja = await Ninja.create(req.body);
@@ -19,7 +29,13 @@ const ninjaRouter = Ninja => {
     }
   });
 
-  router.put('/:id', (req, res) => {
+  router.put('/:id', async (req, res) => {
+    try {
+      const ninja = await Ninja.findById(req.params);
+      res.send(ninja);
+    } catch (error) {
+      res.sendStatus(404);
+    }
     res.json({ type: 'PUT' });
   });
 
