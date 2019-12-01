@@ -4,7 +4,7 @@ const { model, Schema } = mongoose;
 const ninjaSchema = new Schema({
   name: {
     type: String,
-    required: [true, 'name in required']
+    required: [true, 'name is required']
   },
   rank: String,
   available: {

@@ -4,8 +4,8 @@ post http://localhost:1233/api/ninjas
 Content-Type: application/json
 
 {
-    "name": "gon freecs",
-    "rank": "green belt"
+    "name": "Uvogin",
+    "rank": "black belt"
 }
 ###
 put http://localhost:1233/api/ninjas/3

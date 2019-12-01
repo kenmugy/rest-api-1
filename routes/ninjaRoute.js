@@ -1,8 +1,13 @@
 const router = require('express').Router();
 
 const ninjaRouter = Ninja => {
-  router.get('/', (req, res) => {
-    res.json({ type: 'GET' });
+  router.get('/', async (req, res) => {
+    try {
+      const ninjas = await Ninja.find();
+      res.json({ type: 'GET', ninjas });
+    } catch (err) {
+      res.sendStatus(400);
+    }
   });
 
   router.post('/', async (req, res) => {
@@ -10,7 +15,7 @@ const ninjaRouter = Ninja => {
       const ninja = await Ninja.create(req.body);
       res.json({ type: 'POST', status: 200, ninja });
     } catch (error) {
-      res.status(400).send('error creating ninja');
+      res.status(422).send('error creating ninja');
     }
   });
 
