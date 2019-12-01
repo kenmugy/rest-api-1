@@ -13,6 +13,7 @@ const ninjaRouter = Ninja => {
   router.get('/:id', async (req, res) => {
     try {
       const ninja = await Ninja.findById(req.params.id);
+      if (!ninja) return res.status(404).send('ninja not found');
       res.json(ninja);
     } catch (error) {
       res.sendStatus(404);
@@ -31,16 +32,28 @@ const ninjaRouter = Ninja => {
 
   router.put('/:id', async (req, res) => {
     try {
-      const ninja = await Ninja.findById(req.params);
-      res.send(ninja);
+      let ninja = await Ninja.findById(req.params.id);
+      console.log(ninja);
+      if (!ninja) return res.status(404).send('ninja not found');
+      ninja.name = req.body.name;
+      ninja.rank = req.body.rank;
+      ninja.availability = req.body.availability;
+      ninja.save();
+
+      //   const newNinja = await ninja.save();
+      res.json({ 'new ninja': ninja });
     } catch (error) {
       res.sendStatus(404);
     }
-    res.json({ type: 'PUT' });
   });
 
-  router.delete('/:id', (req, res) => {
-    res.json({ type: 'DELETE' });
+  router.delete('/:id', async (req, res) => {
+    try {
+      const ninja = await Ninja.findByIdAndRemove(req.params.id);
+      res.json({ type: 'DELETE', status: 200, 'ninja removed': ninja });
+    } catch (error) {
+      res.send(error);
+    }
   });
 
   return router;
