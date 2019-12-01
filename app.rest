@@ -1,6 +1,12 @@
 get http://localhost:1233/api/ninjas
 ###
 post http://localhost:1233/api/ninjas
+Content-Type: application/json
+
+{
+    "name": "gon freecs",
+    "rank": "green belt"
+}
 ###
 put http://localhost:1233/api/ninjas/3
 ###

@@ -9,7 +9,7 @@ const ninjaSchema = new Schema({
   rank: String,
   available: {
     type: Boolean,
-    default: false
+    default: true
   }
   //   add in geolocation
 });
