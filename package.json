@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "nodemon app"
+  },
   "dependencies": {
     "@hapi/joi": "^16.1.7",
     "bcrypt": "^3.0.6",
